@@ -1,0 +1,21 @@
+<resources>
+  <string name="app_name">Parent Notfication</string>
+  <string name="title_student_detail">Student ID</string>
+  <string name="student_absence_label">Absences</string>Android SQLite
+  <string name="student_tardies_label">Tardies</string>
+  <string name="app_absence">DatePicker</string>
+  <string name="action_settings">Settings</string>
+  <string name="hello_world">Hello world!</string>
+  <string name="date_label_set">Press the button to set the date</string>
+  <string name="date_button_set">Set Date</string>
+  <string name="date_view_set">The Date is: </string>
+  <string name="absense_alert">Is this an excused absense? </string>
+  <string name="tardy_alert">Is this an excused tardy?</string>
+  <string name="date_selected"></string>
+  <string name="yes">Yes?</string>
+  <string name="no">No?</string>
+  <string name="new_tardy_label">New Tardy</string>
+  <string name="input_absence">Create Absense</string>
+  <string name="input_tardy">Create Tardy</string>
+
+</resources>

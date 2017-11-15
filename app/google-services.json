@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "873032247470",
+    "project_id": "parent-notification"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:873032247470:android:3dfe823eb6a3fd9a",
+        "android_client_info": {
+          "package_name": "edu.cnm.deepdive.ormdemo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "873032247470-smk9b92eukhppbk7tkadg5t43ej50uj0.apps.googleusercontent.com",
+          "client_type": 3
+        },
+        {
+          "client_id": "873032247470-c1lcojfaq37qboj5t0a6crhr6mlcek3f.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "edu.cnm.deepdive.ormdemo",
+            "certificate_hash": "1a072806a485fe73ad2bcd5618f505ea0023babc"
+          }
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAoCVjxRIPHO4v33tnuQu0v8rWpqWPD3g0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
