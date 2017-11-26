@@ -1,20 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  android:layout_width="wrap_content"
+  android:layout_width="match_parent"
   android:layout_height="wrap_content"
   android:orientation="horizontal">
 
   <TextView
     android:id="@+id/student_name"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:text="MEKONG DELTA"
+    android:layout_width="0dp"
+    android:layout_height="match_parent"
     android:layout_margin="@dimen/text_margin"
+    android:textAppearance="?attr/textAppearanceListItem"
+    android:layout_weight="1"
+    android:gravity="center"/>
+  <CheckBox
+    android:id="@+id/present_checkbox"
+    android:layout_width="40dp"
+    android:layout_height="match_parent"
     android:textAppearance="?attr/textAppearanceListItem"/>
-
   <TextView
-    android:id="@+id/student_created"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
+    android:id="@+id/present_text"
+    android:text="In Class"
+    android:layout_width="0dp"
+    android:layout_height="match_parent"
     android:layout_margin="@dimen/text_margin"
-    android:textAppearance="?attr/textAppearanceListItem"/>
+    android:textAppearance="?attr/textAppearanceListItem"
+    android:layout_weight=".5"
+    android:gravity="center"/>
+  <Button
+    android:id="@+id/edit_attendance"
+    android:text="RA"
+    android:layout_width="0dp"
+    android:layout_height="match_parent"
+    android:layout_marginRight="20dp"
+    android:layout_weight=".6"/>
+
 </LinearLayout>

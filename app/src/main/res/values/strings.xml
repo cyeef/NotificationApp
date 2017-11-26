@@ -1,6 +1,6 @@
 <resources>
   <string name="app_name">Parent Notfication</string>
-  <string name="title_student_detail">Student ID</string>
+  <string name="title_student_detail">Student Name</string>
   <string name="student_absence_label">Absences</string>Android SQLite
   <string name="student_tardies_label">Tardies</string>
   <string name="app_absence">DatePicker</string>
@@ -17,5 +17,5 @@
   <string name="new_tardy_label">New Tardy</string>
   <string name="input_absence">Create Absense</string>
   <string name="input_tardy">Create Tardy</string>
-
+  <string name="createStudentInfo">Student Information</string>
 </resources>

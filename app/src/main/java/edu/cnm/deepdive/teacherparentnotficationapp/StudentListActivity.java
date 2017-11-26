@@ -10,15 +10,22 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.TextView;
 
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 
+import com.j256.ormlite.table.TableUtils;
+import edu.cnm.deepdive.teacherparentnotficationapp.entities.Present;
 import edu.cnm.deepdive.teacherparentnotficationapp.entities.Student;
 import edu.cnm.deepdive.teacherparentnotficationapp.helpers.OrmHelper;
 import edu.cnm.deepdive.teacherparentnotficationapp.helpers.OrmHelper.OrmInteraction;
 import java.sql.SQLException;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -29,7 +36,7 @@ import java.util.List;
  */
 public class StudentListActivity
     extends AppCompatActivity
-    implements OrmInteraction {
+    implements OrmInteraction, OnCheckedChangeListener {
   private static final String LOG_TAG = "STUDENT_LIST_ACTIVITY";
 
   /**
@@ -37,6 +44,7 @@ public class StudentListActivity
    */
   private boolean mTwoPane;
   private OrmHelper helper = null;
+  private RecyclerView recyclerView;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +65,7 @@ public class StudentListActivity
    //   }
   //  });
 
-    View recyclerView = findViewById(R.id.student_list);
+     recyclerView = (RecyclerView) findViewById(R.id.student_list);
     assert recyclerView != null;
     setupRecyclerView((RecyclerView) recyclerView);
 
@@ -105,6 +113,11 @@ public class StudentListActivity
 
   }
 
+  @Override
+  public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+
+
+  }
 
 
   public class SimpleItemRecyclerViewAdapter
@@ -121,15 +134,32 @@ public class StudentListActivity
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
       View view = LayoutInflater.from(parent.getContext())
           .inflate(R.layout.student_list_content, parent, false);
+  //    ((CheckBox)view.findViewById(R.id.present_checkbox)).setOnCheckedChangeListener(StudentListActivity.this);
+
       return new ViewHolder(view);
+
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
       holder.mItem = mValues.get(position);
       holder.mStudentView.setText(mValues.get(position).getName());
-      holder.mCreatedView.setText(mValues.get(position).getCreated().toString());
+    //  holder.mCreatedView.setText(mValues.get(position).getCreated().toString());
+      final CheckBox present_checkbox = holder.mView.findViewById(R.id.present_checkbox);
+      present_checkbox.setOnCheckedChangeListener(new OnCheckedChangeListener( ) {
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+          Present present = new Present();
+          present.setStudent(mValues.get(position));
+          present.setDate(new Date( ));
 
+          try {
+            getHelper().getPresentDao().create(present);
+          } catch (SQLException e) {
+            e.printStackTrace( );
+          }
+        }
+      });
       holder.mView.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -149,6 +179,17 @@ public class StudentListActivity
           }
         }
       });
+      holder.mRecordAbsences.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+
+            Context context = v.getContext();
+            Intent intent = new Intent(context, StudentDetailActivity.class);
+            intent.putExtra(StudentDetailFragment.STUDENT_ID, holder.mItem.getId());
+            context.startActivity(intent);
+          }
+
+      });
     }
 
     @Override
@@ -160,7 +201,7 @@ public class StudentListActivity
 
       public final View mView;
       public final TextView mStudentView;
-      public final TextView mCreatedView;
+      // public final TextView mCreatedView;
       public final TextView mParentName;
       public final TextView mParentNumber;
       public final TextView mParentEmail;
@@ -170,6 +211,7 @@ public class StudentListActivity
       public final TextView mUnexcusedAbsences;
      // public final TextView mTardies;
       public Student mItem;
+      public final Button mRecordAbsences;
 
 
 
@@ -180,14 +222,15 @@ public class StudentListActivity
         super(view);
         mView = view;
         mStudentView = (TextView) view.findViewById(R.id.student_name);
-        mCreatedView = (TextView) view.findViewById(R.id.student_created);
+      //  mCreatedView = (TextView) view.findViewById(R.id.student_created);
         mParentName = (TextView) view.findViewById(R.id.parent_name);
         mParentNumber = (TextView) view.findViewById(R.id.parent_number);
         mParentEmail = (TextView) view.findViewById(R.id.parent_email);
         mAlternativeNumber = (TextView) view.findViewById(R.id.alternative_number);
         mGradeLevel = (TextView) view.findViewById(R.id.grade_level);
         mmAbsences = (TextView) view.findViewById(R.id.absences);
-        mUnexcusedAbsences = (TextView) view.findViewById(R.id.unexcused_absences);
+        mUnexcusedAbsences =  view.findViewById(R.id.unexcused_absences);
+        mRecordAbsences = (Button)view.findViewById(R.id.edit_attendance);
         //mTardies = (TextView) view.findViewById(R.id.tardies);
 
       }

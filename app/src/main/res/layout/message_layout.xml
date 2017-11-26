@@ -6,11 +6,6 @@
     android:orientation="vertical"
   android:weightSum="1">
 
-  <Button
-    android:id="@+id/buttonSend"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Send"/>
   <EditText
     android:id="@+id/parent_number"
     android:layout_width="match_parent"
@@ -23,6 +18,25 @@
     android:layout_height="wrap_content"
     android:ems="10"
     android:inputType="textMultiLine"/>
+  <Button
+    android:id="@+id/buttonSend"
+    android:layout_width="109dp"
+    android:layout_height="wrap_content"
+    android:text="Send SMS"/>
+  <EditText
+    android:id="@+id/parent_email"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="200dp"
+    android:ems="10"
+    android:inputType="textEmailAddress"/>
+
+  <Button
+    android:id="@+id/emailSend"
+    android:text="Send Email"
+    android:layout_width="109dp"
+    android:layout_height="wrap_content"/>
+
 
 
 </LinearLayout>

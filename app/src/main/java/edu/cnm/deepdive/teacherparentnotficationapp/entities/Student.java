@@ -92,7 +92,7 @@ public class Student {
     return parent_number;
   }
 
-  public void setParent_number(String parent_number) {
+  public void setContactInfo(String parent_number) {
     this.parent_number = parent_number;
   }
 

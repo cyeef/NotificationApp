@@ -2,6 +2,7 @@ package edu.cnm.deepdive.teacherparentnotficationapp.entities;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
+import edu.cnm.deepdive.teacherparentnotficationapp.DatePickerFragment;
 import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -47,7 +48,7 @@ public Student getStudent() {
 public void setStudent(Student student) {
   this.student = student;
 }
-public Date getDate() {
+public Date dgetDate() {
   return date;
 }
 public void setDate(Date date) {
